@@ -3,13 +3,13 @@ import { CSS } from "@dnd-kit/utilities";
 
 import "./Task.css";
 
-export const Task = ({ id, title }) => {
+export const Task = ({ item }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
+    useSortable({ id: item.id });
 
   const style = {
     transition,
-    transform: CSS.Transform.toString(transform),
+    transform: CSS.Translate.toString(transform),
   };
 
   return (
@@ -21,7 +21,7 @@ export const Task = ({ id, title }) => {
       className="task"
     >
       <input type="checkbox" className="checkbox" />
-      {title}
+      <div style={{ flex: "1" }}> {item.title}</div>
     </div>
   );
 };
